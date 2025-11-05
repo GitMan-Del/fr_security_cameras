@@ -79,16 +79,18 @@ const slides = [
 ];
 
 export default function HomePage() {
+
+  
   ScrollHook();
   const [current, setCurrent] = useState(0);
   const total = slides.length;
   const [isOpen, setIsOpen] = useState(false);
   const [translate, setTranslate] = useState(false);
-
+  
   const nextSlide = useCallback(() => {
     setCurrent((prev) => (prev + 1) % total);
   }, [total]);
-
+  
   const prevSlide = useCallback(() => {
     setCurrent((prev) => (prev - 1 + total) % total);
   }, [total]);
@@ -191,11 +193,8 @@ export default function HomePage() {
 
               {/* Butoane săgeți – glassmorphism + pulse */}
               <div
-                style={{
-                  // Ascunde complet sub 1100px
-                  display: window.innerWidth >= 1100 ? "hidden" : "none",
-                }}
-                className="absolute bottom-10 right-10 flex flex-row gap-3"
+               
+                className="absolute bottom-10 right-10 lg:flex hidden flex-row gap-3"
               >
                 <motion.div
                   whileHover={{ scale: 1.1 }}
@@ -234,11 +233,8 @@ export default function HomePage() {
 
             {/* RIGHT – Card slider */}
             <div
-              className="flex w-full h-full flex-1 min-w-[350px] xl:min-w-[200px] flex-row justify-center items-end"
-              style={{
-                // Ascunde complet sub 1100px
-                display: window.innerWidth >= 1100 ? "hidden" : "none",
-              }}
+              className="hidden lg:flex w-full h-full flex-1 min-w-[350px] xl:min-w-[200px] flex-row justify-center items-end"
+            
             >
               <AnimatePresence mode="wait">
                 <motion.div

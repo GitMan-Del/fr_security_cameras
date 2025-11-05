@@ -14,9 +14,7 @@
     "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
-      {
-        "name": "next"
-      }
+      { "name": "next" }
     ],
     "paths": {
       "@/*": ["./*"]
@@ -28,7 +26,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-, "tailwind.config.ts"  ],
+    "**/*.mts",
+    "tailwind.config.ts",
+    "postcss.config.js"
+  ],
   "exclude": ["node_modules"]
 }

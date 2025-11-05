@@ -56,11 +56,8 @@ export default function Navbar({
 
           {/* ----------------- NAV ----------------- */}
           <nav
-          style={{
-                // Ascunde complet sub 1100px
-                display: window.innerWidth >= 1100 ? "hidden" : "none",
-              }}  
-            className="relative mt-5 flex space-x-8" ref={navRef}>
+         
+            className="lg:flex hidden relative mt-5 space-x-8" ref={navRef}>
             {links.map((link) => (
               <Link
                 key={link.href}
@@ -156,11 +153,7 @@ export default function Navbar({
 
       {/* RIGHT SIDE (phone + CTA) */}
       <div
-      style={{
-                // Ascunde complet sub 1100px
-                display: window.innerWidth >= 1100 ? "hidden" : "none",
-              }}
-        className="flex items-center lg:flex-2 xl:flex-1 justify-between text-white w-full h-full max-w-[300px]">
+        className="lg:flex hidden items-center lg:flex-2 xl:flex-1 justify-between text-white w-full h-full max-w-[300px]">
         <div className="flex items-center gap-2">
          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
