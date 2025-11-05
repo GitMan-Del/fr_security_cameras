@@ -155,12 +155,12 @@ export default function HomePage() {
                 transition={{ duration: 0.9, ease: "easeOut" }}
                 className="w-full flex flex-col gap-3"
               >
-                <h1 className="text-5xl max-w-[600px] text-(--sec-color)">
+                <h1 className="text-4xl xl:text-5xl max-w-[600px] text-(--sec-color)">
                   {translate
                     ? "Best Practices  For All Homes Security Systems"
                     : " Bonnes Pratiques Pour Tous Les Systèmes De Sécurité Domestique"}
                 </h1>
-                <p className="text-sm max-w-[500px] text-(--sec-color)">
+                <p className="text-xs xl:text-sm max-w-[500px] text-(--sec-color)">
                   {translate
                     ? "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, nknown printer took a galley of type."
                     : "Ceci est un texte factice utilisé dans l’imprimerie et la composition depuis le XVIᵉ siècle. Lorem Ipsum est devenu la norme du texte de remplissage depuis qu’un imprimeur inconnu a assemblé des caractères pour en faire un spécimen."}
@@ -190,7 +190,13 @@ export default function HomePage() {
               </motion.div>
 
               {/* Butoane săgeți – glassmorphism + pulse */}
-              <div className="absolute bottom-10 right-10 flex flex-row gap-3">
+              <div
+                style={{
+                  // Ascunde complet sub 1100px
+                  display: window.innerWidth >= 1100 ? "hidden" : "none",
+                }}
+                className="absolute bottom-10 right-10 flex flex-row gap-3"
+              >
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.1 }}
@@ -227,7 +233,13 @@ export default function HomePage() {
             </div>
 
             {/* RIGHT – Card slider */}
-            <div className="w-full h-full flex flex-1 flex-row justify-center items-end">
+            <div
+              className="flex w-full h-full flex-1 min-w-[350px] xl:min-w-[200px] flex-row justify-center items-end"
+              style={{
+                // Ascunde complet sub 1100px
+                display: window.innerWidth >= 1100 ? "hidden" : "none",
+              }}
+            >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current}
@@ -279,7 +291,6 @@ export default function HomePage() {
           transition={{ duration: 1 }}
           className="w-full h-screen bg-(--sec-color) items-center px-[120px] flex flex-row justify-between"
         >
-          {/* === IMAGINEA – PORTRAIT (3:4) === */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
@@ -297,7 +308,6 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* === TEXTUL – 100% CA LA TINE === */}
           <motion.div
             initial={{ x: 100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
@@ -337,6 +347,7 @@ export default function HomePage() {
           </motion.div>
         </motion.section>
 
+        {/* NU AI TREABA AICI */}
         <section className="w-full py-20 bg-(--background) relative px-[120px] flex items-center flex-col gap-20 overflow-hidden">
           {/* Subtle animated gradient background */}
           <div className="absolute inset-0 opacity-20">

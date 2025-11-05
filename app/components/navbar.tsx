@@ -48,13 +48,19 @@ export default function Navbar({
     <div className="w-full text-sm min-h-[50px] justify-between flex flex-row absolute top-0 right-0 items-center border-b border-(--border2-color) z-50">
       {/* LOGO + NAV */}
       <div className="flex-4 flex items-center max-w-[1200px]">
-        <div className="flex flex-row justify-between text-white items-center px-10 w-full">
+        <div
+          className="flex flex-row justify-between text-white items-center px-10 w-full">
           <h1 className="text-2xl font-bold" style={{ fontFamily: "unset" }}>
             LOGO.
           </h1>
 
           {/* ----------------- NAV ----------------- */}
-          <nav className="relative mt-5 flex space-x-8" ref={navRef}>
+          <nav
+          style={{
+                // Ascunde complet sub 1100px
+                display: window.innerWidth >= 1100 ? "hidden" : "none",
+              }}  
+            className="relative mt-5 flex space-x-8" ref={navRef}>
             {links.map((link) => (
               <Link
                 key={link.href}
@@ -149,7 +155,12 @@ export default function Navbar({
       </div>
 
       {/* RIGHT SIDE (phone + CTA) */}
-      <div className="flex items-center flex-1 justify-between text-white w-full h-full max-w-[300px]">
+      <div
+      style={{
+                // Ascunde complet sub 1100px
+                display: window.innerWidth >= 1100 ? "hidden" : "none",
+              }}
+        className="flex items-center lg:flex-2 xl:flex-1 justify-between text-white w-full h-full max-w-[300px]">
         <div className="flex items-center gap-2">
          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
