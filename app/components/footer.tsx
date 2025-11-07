@@ -2,7 +2,7 @@
 
 export default function Footer() {
   return (
-    <footer className="bg-(--sec-color) py-12 px-6 md:px-12 lg:px-20 border-t border-gray-200">
+    <footer className="bg-(--sec-color) py-12 px-6 md:px-12 lg:px-20 border-t border-gray-200 mt-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8">
         {/* Logo + Descriere */}
         <div className="md:col-span-4 space-y-4">

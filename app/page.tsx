@@ -9,6 +9,7 @@ import { ScrollHook } from "./components/SmoothScroll";
 import Banners from "./components/sections/Baners";
 // import Reviews from "./components/sections/Reviews";
 import Footer from "./components/footer";
+import Image from "next/image";
 
 
 const slides = [
@@ -65,12 +66,16 @@ export default function HomePage() {
           )}
         <div
           className="w-full h-screen relative overflow-hidden"
-          style={{
-            backgroundImage: "url('/important/Background.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
         >
+          <Image
+        src="/important/Background.png"
+        alt="Hero background"
+        fill
+        priority
+        quality={4000}
+        className="object-cover object-center"
+        sizes="100vw"
+      />
           {/* SVG curbat – animat din stânga */}
           <motion.svg
             initial={{ x: "-100%" }}
