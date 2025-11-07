@@ -1,57 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Navbar from "./components/navbar";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ScrollHook } from "./components/SmoothScroll";
-import CountUp from "react-countup";
-const ShieldIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-  >
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-  </svg>
-);
+import Partners from "./components/sections/Partners";
+import SectionTest from "./components/sections/Section2test";
 
-const CameraIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-  >
-    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-    <circle cx="12" cy="13" r="4" />
-  </svg>
-);
-
-const StarIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-  </svg>
-);
-
-const ClockIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-  >
-    <circle cx="12" cy="12" r="10" />
-    <polyline points="12 6 12 12 16 14" />
-  </svg>
-);
 
 const slides = [
   {
@@ -79,9 +33,6 @@ const slides = [
 ];
 
 export default function HomePage() {
-
-  
-  ScrollHook();
   const [current, setCurrent] = useState(0);
   const total = slides.length;
   const [isOpen, setIsOpen] = useState(false);
@@ -95,32 +46,20 @@ export default function HomePage() {
     setCurrent((prev) => (prev - 1 + total) % total);
   }, [total]);
 
-  // Auto‑play stabil
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 6000);
-    return () => clearInterval(interval);
-  }, [nextSlide]);
-
   return (
     <>
       <div className="w-full min-h-screen flex flex-col relative">
-        {/* Overlay blur la meniu */}
-        <AnimatePresence>
+        {/* Overlay la meniu */}
           {isOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+            <div             
               onClick={() => setIsOpen(false)}
-              className="w-full h-full bg-black/30 backdrop-blur-sm absolute top-0 left-0 z-50"
+              className="w-full h-full bg-transparent absolute top-0 left-0 z-50"
             />
           )}
-        </AnimatePresence>
-
         <div
           className="w-full h-screen relative overflow-hidden"
           style={{
-            backgroundImage: "url('/Background.png')",
+            backgroundImage: "url('/important/Background.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -228,7 +167,7 @@ export default function HomePage() {
                     />
                   </svg>
                 </motion.div>
-              </div>
+              </div> 
             </div>
 
             {/* RIGHT – Card slider */}
@@ -266,7 +205,7 @@ export default function HomePage() {
                       : slides[current].description_fr}
                   </motion.p>
 
-                  {/* Progress bar animată */}
+                  {/* Progress bar animată
                   <motion.div
                     className="w-full h-1.5 bg-gray-300 rounded-full mt-5 overflow-hidden"
                     initial={{ width: 0 }}
@@ -274,173 +213,16 @@ export default function HomePage() {
                     transition={{ duration: 5, ease: "linear" }}
                   >
                     <div className="h-full bg-lime-500 rounded-full" />
-                  </motion.div>
+                  </motion.div> */}
                 </motion.div>
               </AnimatePresence>
             </div>
           </div>
         </div>
 
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="w-full h-screen bg-(--sec-color) items-center px-[120px] flex flex-row justify-between"
-        >
-          <motion.div
-            initial={{ x: -100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="shrink-0"
-          >
-            <div className="relative w-[300px] h-[400px] md:w-[340px] md:h-[453px] lg:w-[380px] lg:h-[506px] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/Background.png"
-                alt="Background"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ x: 100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col gap-3 items-end"
-          >
-            <h2 className="text-5xl text-(--2-sec) max-w-[600px] text-right">
-              {translate
-                ? "Who are we? Security experts for over 10 years."
-                : "Qui sommes-nous, experts en sécurité depuis 10 ans ?"}
-            </h2>
-            <p className="text-sm max-w-[550px] text-right">
-              {translate
-                ? "We specialize in installing, maintaining, and monitoring security systems for homes and businesses. For over 10 years, we’ve kept families, shops, and offices safe with cutting-edge solutions: IP cameras, smart alarms, remote access, and more."
-                : "Notre entreprise est spécialisée dans l’installation, la maintenance et la supervision de systèmes de sécurité pour particuliers et professionnels. Depuis plus d’une décennie, nous protégeons les foyers, les commerces et les bureaux grâce à des solutions modernes et fiables : caméras IP, alarmes connectées, contrôle à distance et plus encore."}
-            </p>
-            <div className="flex flex-row gap-4 text-sm mt-4">
-              <motion.button
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-(--primary) text-black font-medium rounded-full"
-              >
-                {translate ? "Explore  Our Service" : "Découvrez Nos Services"}
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.95 }}
-                style={{
-                  background: "var(--2-sec)",
-                  color: "var(--sec-color)",
-                }}
-                className="px-6 py-3 font-medium rounded-full"
-              >
-                {translate ? "More About Us" : "En Savoir Plus"}
-              </motion.button>
-            </div>
-          </motion.div>
-        </motion.section>
-
-        {/* NU AI TREABA AICI */}
-        <section className="w-full py-20 bg-(--background) relative px-[120px] flex items-center flex-col gap-20 overflow-hidden">
-          {/* Subtle animated gradient background */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute inset-0 bg-linear-to-br from-(--primary)/10 via-transparent to-(--primary)/5" />
-          </div>
-
-          <div className="w-full flex flex-row items-center justify-between relative z-10">
-            <h2 className="text-4xl lg:text-5xl font-normal text-(--sec-color) leading-tight max-w-[700px]">
-              Boutique : <span className="text-(--primary)">équipez</span> votre
-              <br />
-              maison en toute <span className="text-(--primary)">sécurité</span>
-            </h2>
-
-            <p className="text-sm text-(--sec-color) max-w-md text-right leading-relaxed">
-              Découvrez notre sélection de produits de sécurité les plus
-              demandés : caméras IP, alarmes connectées, détecteurs de
-              mouvement, enregistreurs et accessoires. Tous nos équipements sont
-              testés, certifiés et faciles à installer.
-            </p>
-          </div>
-
-          {/* GRID cu 4 statistici – DARK MODE MISTO */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full relative z-10">
-            {[
-              {
-                value: 10,
-                suffix: "+",
-                label: "Années d'expérience",
-                sub: "Depuis 2015",
-              },
-              {
-                value: 2850,
-                suffix: "+",
-                label: "Caméras installées",
-                sub: "IP & 4K",
-              },
-              {
-                value: 98,
-                suffix: "%",
-                label: "Clients satisfaits",
-                sub: "Avis 5 étoiles",
-              },
-              {
-                value: 24,
-                suffix: "/7",
-                label: "Support disponible",
-                sub: "Intervention rapide",
-              },
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ y: 60, opacity: 0, scale: 0.9 }}
-                whileInView={{ y: 0, opacity: 1, scale: 1 }}
-                transition={{ duration: 0.7, delay: i * 0.15, ease: "easeOut" }}
-                viewport={{ once: true }}
-                className="group"
-              >
-                <div className="relative bg-(--2-sec)/80 backdrop-blur-xl rounded-3xl p-8 border border-(--border2-color) overflow-hidden transition-all duration-500 group-hover:border-(--primary)/40 group-hover:shadow-2xl group-hover:-translate-y-3">
-                  {/* Shimmer line */}
-                  <motion.div
-                    className="absolute top-0 left-0 h-px bg-linear-to-r from-transparent via-(--primary) to-transparent"
-                    animate={{ x: [-100, 400] }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  />
-
-                  <div className="relative z-10 text-center">
-                    <div className="text-5xl lg:text-6xl font-bold text-(--primary) mb-3 drop-shadow-lg">
-                      <CountUp
-                        end={stat.value}
-                        duration={2.8}
-                        suffix={stat.suffix}
-                      />
-                    </div>
-                    <p className="text-(--sec-color) font-semibold text-lg tracking-wide">
-                      {stat.label}
-                    </p>
-                    <p className="text-(--sec-color)/50 text-sm mt-1">
-                      {stat.sub}
-                    </p>
-                  </div>
-
-                  {/* Icon subtle glow */}
-                  <div className="absolute top-4 right-4 text-(--primary)/20">
-                    {i === 0 && <ShieldIcon />}
-                    {i === 1 && <CameraIcon />}
-                    {i === 2 && <StarIcon />}
-                    {i === 3 && <ClockIcon />}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        
+        <Partners />
+        <SectionTest />
       </div>
     </>
   );

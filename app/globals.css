@@ -10,7 +10,7 @@
 }
 
 body{
- background: var(--background);
+ background: var(--sec-color);
 }
 
 button{

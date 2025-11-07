@@ -1,8 +1,7 @@
-
-
 import type { Metadata } from "next";
 import { Geist, Titan_One } from "next/font/google";
 import "./globals.css";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${TitanOne.variable} antialiased`}
-      >
+        >
         {children}
       </body>
     </html>
