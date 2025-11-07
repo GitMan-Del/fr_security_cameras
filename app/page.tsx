@@ -5,6 +5,10 @@ import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Partners from "./components/sections/Partners";
 import SectionTest from "./components/sections/Section2test";
+import { ScrollHook } from "./components/SmoothScroll";
+import Banners from "./components/sections/Baners";
+// import Reviews from "./components/sections/Reviews";
+import Footer from "./components/footer";
 
 
 const slides = [
@@ -32,7 +36,10 @@ const slides = [
   },
 ];
 
+
 export default function HomePage() {
+  ScrollHook();
+
   const [current, setCurrent] = useState(0);
   const total = slides.length;
   const [isOpen, setIsOpen] = useState(false);
@@ -222,7 +229,13 @@ export default function HomePage() {
 
         
         <Partners />
+        <div className="relative h-full w-full">
         <SectionTest />
+        </div>
+        <Banners />
+        {/* <Reviews /> */}
+
+        <Footer />
       </div>
     </>
   );
