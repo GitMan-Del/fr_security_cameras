@@ -51,7 +51,7 @@ export default function Navbar({
     <div className="w-full text-sm min-h-[50px] justify-between flex flex-row absolute top-0 right-0 items-center border-b border-(--border2-color) z-50">
       {/* LOGO + NAV */}
       <div className="flex-4 flex items-center max-w-[1200px]">
-        <div className="flex flex-row justify-between text-white items-center px-10 w-full">
+        <div className="flex flex-row justify-between text-white items-center p-4 md:p-0 md:px-10 w-full">
           {/* Logo */}
           <svg
             width="37"

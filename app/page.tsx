@@ -11,7 +11,6 @@ import Banners from "./components/sections/Baners";
 import Footer from "./components/footer";
 import Image from "next/image";
 
-
 const slides = [
   {
     title_fr: "Produits de Sécurité Domestique",
@@ -37,7 +36,6 @@ const slides = [
   },
 ];
 
-
 export default function HomePage() {
   ScrollHook();
 
@@ -45,11 +43,11 @@ export default function HomePage() {
   const total = slides.length;
   const [isOpen, setIsOpen] = useState(false);
   const [translate, setTranslate] = useState(false);
-  
+
   const nextSlide = useCallback(() => {
     setCurrent((prev) => (prev + 1) % total);
   }, [total]);
-  
+
   const prevSlide = useCallback(() => {
     setCurrent((prev) => (prev - 1 + total) % total);
   }, [total]);
@@ -58,24 +56,22 @@ export default function HomePage() {
     <>
       <div className="w-full min-h-screen flex flex-col relative">
         {/* Overlay la meniu */}
-          {isOpen && (
-            <div             
-              onClick={() => setIsOpen(false)}
-              className="w-full h-full bg-transparent absolute top-0 left-0 z-50"
-            />
-          )}
-        <div
-          className="w-full h-screen relative overflow-hidden"
-        >
+        {isOpen && (
+          <div
+            onClick={() => setIsOpen(false)}
+            className="w-full h-full bg-transparent absolute top-0 left-0 z-50"
+          />
+        )}
+        <div className="w-full h-screen relative overflow-hidden">
           <Image
-        src="/important/Background.png"
-        alt="Hero background"
-        fill
-        priority
-        quality={4000}
-        className="object-cover object-center"
-        sizes="100vw"
-      />
+            src="/important/Background.png"
+            alt="Hero background"
+            fill
+            priority
+            quality={4000}
+            className="object-cover object-center"
+            sizes="100vw"
+          />
           {/* SVG curbat – animat din stânga */}
           <motion.svg
             initial={{ x: "-100%" }}
@@ -101,14 +97,14 @@ export default function HomePage() {
 
           <div className="flex flex-row items-center w-full h-full">
             {/* LEFT – Text */}
-            <div className="w-full h-full flex-3 flex items-center px-[120px] border-r border-(--border2-color) relative">
+            <div className="w-full h-full flex-3 flex md:justify-start justify-center items-center md:text-left text-center md:px-[120px] px-5 border-r border-(--border2-color) relative">
               <motion.div
                 initial={{ opacity: 0, x: -80 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.9, ease: "easeOut" }}
-                className="w-full flex flex-col gap-3"
+                className="w-full flex flex-col gap-3 mx-auto items-center md:items-start"
               >
-                <h1 className="text-4xl xl:text-5xl max-w-[600px] text-(--sec-color)">
+                <h1 className="text-3xl xl:text-5xl max-w-[600px] text-(--sec-color)">
                   {translate
                     ? "Best Practices  For All Homes Security Systems"
                     : " Bonnes Pratiques Pour Tous Les Systèmes De Sécurité Domestique"}
@@ -118,7 +114,7 @@ export default function HomePage() {
                     ? "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, nknown printer took a galley of type."
                     : "Ceci est un texte factice utilisé dans l’imprimerie et la composition depuis le XVIᵉ siècle. Lorem Ipsum est devenu la norme du texte de remplissage depuis qu’un imprimeur inconnu a assemblé des caractères pour en faire un spécimen."}
                 </p>
-                <div className="flex flex-row gap-4 text-sm mt-4">
+                <div className="flex items-center md:justify-start justify-center flex-row gap-4 text-sm mt-4">
                   <motion.button
                     whileHover={{
                       scale: 1.08,
@@ -143,10 +139,7 @@ export default function HomePage() {
               </motion.div>
 
               {/* Butoane săgeți – glassmorphism + pulse */}
-              <div
-               
-                className="absolute bottom-10 right-10 lg:flex hidden flex-row gap-3"
-              >
+              <div className="absolute bottom-10 right-10 lg:flex hidden flex-row gap-3">
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.1 }}
@@ -179,14 +172,11 @@ export default function HomePage() {
                     />
                   </svg>
                 </motion.div>
-              </div> 
+              </div>
             </div>
 
             {/* RIGHT – Card slider */}
-            <div
-              className="hidden lg:flex w-full h-full flex-1 min-w-[350px] xl:min-w-[200px] flex-row justify-center items-end"
-            
-            >
+            <div className="hidden lg:flex w-full h-full flex-1 min-w-[350px] xl:min-w-[200px] flex-row justify-center items-end">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current}
@@ -232,10 +222,9 @@ export default function HomePage() {
           </div>
         </div>
 
-        
         <Partners />
         <div className="relative h-full w-full">
-        <SectionTest />
+          <SectionTest />
         </div>
         <Banners />
         {/* <Reviews /> */}
