@@ -7,7 +7,7 @@ import Partners from "./components/sections/Partners";
 import SectionTest from "./components/sections/Section2test";
 import { ScrollHook } from "./components/SmoothScroll";
 import Banners from "./components/sections/Baners";
-// import Reviews from "./components/sections/Reviews";
+import Reviews from "./components/sections/Reviews";
 import Footer from "./components/footer";
 import Image from "next/image";
 
@@ -222,13 +222,13 @@ export default function HomePage() {
           </div>
         </div>
 
+
         <Partners />
         <div className="relative h-full w-full">
           <SectionTest />
         </div>
         <Banners />
-        {/* <Reviews /> */}
-
+        <Reviews />
         <Footer />
       </div>
     </>
