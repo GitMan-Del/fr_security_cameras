@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Reviews() {
   return (
-    <div className="w-full min-h-screen flex items-center flex-col gap-10 ">
+    <div className="w-full md:min-h-screen h-screen flex items-center flex-col gap-10 ">
       <div className="flex flex-col items-center gap-10">
         <h3
           style={{
