@@ -8,24 +8,25 @@ export default function Reviews() {
           style={{
             fontFamily: "unset",
           }}
-          className="max-w-[410px] bg-linear-to-b from-(--background) to-(--sec-color) bg-clip-text text-transparent z-50 text-5xl text-center mt-32 font-bold"
+          className="md:max-w-[410px] max-w-[350px] bg-linear-to-b from-(--background) to-(--sec-color) bg-clip-text text-transparent z-50 text-4xl md:text-5xl text-center mt-32 font-bold"
         >
           Read reviews, ride with confidence
         </h3>
         <div className="flex flex-row items-center justify-center gap-5">
-          <p className="mt-2">4.3/5</p>
+          <p className="mt-2 md:text-base text-xs">4.3/5</p>
           <Image
             src="/important/image 7.svg"
             alt="TrustPilot"
             width={150}
             height={50}
+            className="max-w-28 h-10 md:w-[150px] md:h-[50px]"
           />
-          <p className="mt-2">Based on 5210 reviews</p>
+          <p className="mt-2 md:text-base text-xs">Based on 5210 reviews</p>
         </div>
       </div>
 
-      <div className="w-full h-full flex flex-2 flex-row items-center gap-10 pl-[150px]">
-        <div className="flex-1 flex-col gap-3 w-full">
+      <div className="w-full h-full flex flex-2 flex-row items-center gap-10 pl-10 md:pl-[150px]">
+        <div className="flex-1 flex-col md:flex hidden gap-10">
           {/* Quotation SVG */}
           <svg
             width="81"
@@ -54,7 +55,7 @@ export default function Reviews() {
           </h4>
 
           {/* Navigation Controls */}
-          <div className="flex-2 w-full flex flex-row items-center justify-between gap-4 mt-6">
+          <div className="flex w-full flex-row items-center justify-between gap-4 mt-6">
             {/* Left Arrow */}
             <button
               style={{
@@ -95,7 +96,7 @@ export default function Reviews() {
         </div>
 
         {/* Testimonial Content Area */}
-        <div className="w-full flex-5 h-[300px] bg-white border border-gray-200 rounded-lg shadow-sm p-8 flex items-center justify-center"></div>
+        <div className=" md:flex-5 w-full h-[300px] bg-white border border-gray-200 rounded-lg shadow-sm p-8 flex items-center justify-center"></div>
       </div>
     </div>
   );
