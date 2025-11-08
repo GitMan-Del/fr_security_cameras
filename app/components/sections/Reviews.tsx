@@ -94,7 +94,7 @@ export default function Reviews() {
           style={{
             fontFamily: "unset",
           }}
-          className="md:max-w-[410px] max-w-[350px] bg-linear-to-b from-(--background) to-(--sec-color) bg-clip-text text-transparent z-50 text-4xl md:text-5xl text-center mt-32 font-bold"
+          className="md:max-w-[410px] max-w-[350px] bg-linear-to-b from-(--2-sec) from-60% to-(--sec-color) bg-clip-text text-transparent z-50 text-4xl md:text-5xl text-center mt-32 font-bold"
         >
           Read reviews, ride with confidence
         </h3>
@@ -134,7 +134,7 @@ export default function Reviews() {
 
           {/* Heading */}
           <h4
-            className="max-w-[150px] text-2xl text-left tracking-tight font-medium text-gray-900"
+            className="max-w-[150px] text-2xl text-left tracking-tight font-medium text-(--background)"
             style={{ fontFamily: "inherit" }}
           >
             What our Customers are saying
@@ -183,7 +183,11 @@ export default function Reviews() {
           </div>
         </div>
         {/* Testimonial Content Area */}
-        <div className="w-full h-fit flex-5 flex flex-row gap-5 p-10 overflow-y-hidden overflow-scroll">
+        <div
+           style={{
+        scrollbarWidth: "none",
+      }}
+          className="w-full h-fit flex-5 flex flex-row gap-5 p-10 overflow-y-hidden overflow-scroll ">
           {testimonials.map((testimonials, index) => (
             <TestimonialBubble key={index}>
               <div className="flex pl-2 flex-col justify-between w-full h-full">

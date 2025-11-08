@@ -9,7 +9,7 @@ export default function SectionTest() {
           style={{
             fontFamily: "unset",
           }}
-          className="max-w-[550px] bg-linear-to-b from-(--background) to-(--sec-color) bg-clip-text text-transparent z-50 md:text-5xl text-4xl text-center mt-32 font-bold absolute md:-top-40 -top-10"
+          className="max-w-[550px] bg-linear-to-b from-(--2-sec) to-(--sec-color) bg-clip-text text-transparent z-50 md:text-5xl from-60% text-4xl text-center mt-32 font-bold absolute md:-top-40 -top-10"
         >
           Title about some of the Works this team done
         </h2>

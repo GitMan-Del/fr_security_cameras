@@ -51,7 +51,7 @@ export default function Navbar({
     <div className="w-full text-sm min-h-[50px] justify-between flex flex-row absolute top-0 right-0 items-center border-b border-(--border2-color) z-50">
       {/* LOGO + NAV */}
       <div className="flex-4 flex items-center max-w-[1200px]">
-        <div className="flex flex-row justify-between text-white items-center p-4 md:p-0 md:px-10 w-full">
+        <div className="flex flex-row justify-between text-(--sec-color) items-center p-4 md:p-0 md:px-10 w-full">
           {/* Logo */}
           <svg
             width="37"
@@ -101,7 +101,7 @@ export default function Navbar({
                 className={`text-sm pb-10 translate-y-2 transition-colors ${
                   pathname === link.href
                     ? "text-(--primary)"
-                    : "text-gray-300 hover:text-white"
+                    : "text-gray-300 hover:text-(--sec-color)"
                 }`}
               >
                 {link.label}
@@ -200,7 +200,7 @@ export default function Navbar({
       </div>
 
       {/* RIGHT SIDE (phone + CTA) */}
-      <div className="lg:flex hidden items-center lg:flex-2 xl:flex-1 justify-between text-white w-full h-full max-w-[300px]">
+      <div className="lg:flex hidden items-center lg:flex-2 xl:flex-1 justify-between text-(--sec-color) w-full h-full max-w-[300px]">
         <div className="flex items-center gap-2">
           <svg
             width="16"

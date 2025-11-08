@@ -45,7 +45,7 @@ export default function Footer() {
                 fill="#131313"
               />
             </svg>
-            <span className="font-bold text-lg">Logo.</span>
+            <span className="font-bold text-lg text-(--background)">Logo.</span>
           </div>
           <p className="text-sm text-gray-600 leading-relaxed max-w-xs">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -81,7 +81,7 @@ export default function Footer() {
 
           {/* Help */}
           <div>
-            <span className="font-semibold text-gray-900 mb-3">Help</span>
+            <span className="font-semibold text-(--background) mb-3">Help</span>
             <ul className="space-y-2 text-gray-600">
               <li>
                 <a href="#" className="hover:text-(--background) transition">
@@ -108,7 +108,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <span className="font-semibold text-gray-900 mb-3">Company</span>
+            <span className="font-semibold text-(--background) mb-3">Company</span>
             <ul className="space-y-2 text-gray-600">
               <li>
                 <a href="#" className="hover:text-(--background) transition">
@@ -140,7 +140,7 @@ export default function Footer() {
 
           {/* Products */}
           <div>
-            <span className="font-semibold text-gray-900 mb-3">Products</span>
+            <span className="font-semibold text-(--background) mb-3">Products</span>
             <ul className="space-y-2 text-gray-600">
               <li>
                 <a href="#" className="hover:text-(--background) transition">

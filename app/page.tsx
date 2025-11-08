@@ -10,6 +10,7 @@ import Banners from "./components/sections/Baners";
 import Reviews from "./components/sections/Reviews";
 import Footer from "./components/footer";
 import Image from "next/image";
+import TeamSection from "./components/sections/Team";
 
 const slides = [
   {
@@ -131,7 +132,7 @@ export default function HomePage() {
                     whileHover={{ scale: 1.08 }}
                     whileTap={{ scale: 0.95 }}
                     style={{ background: "var(--sec-color)" }}
-                    className="px-6 py-3 text-white font-medium rounded-full"
+                    className="px-6 py-3 text-(--sec-color) font-medium rounded-full"
                   >
                     {translate ? "More About Us →" : "En Savoir Plus →"}
                   </motion.button>
@@ -227,6 +228,8 @@ export default function HomePage() {
           <SectionTest />
         <Banners />
         <Reviews />
+
+        <TeamSection />
         <Footer />
       </div>
     </>

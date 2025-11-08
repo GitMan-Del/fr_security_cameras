@@ -22,8 +22,8 @@ export default function Banners() {
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="w-full max-w-7xl">
           <div className="flex animate-marquee whitespace-nowrap rotate-3">
-            <TapeContent bg="bg-black" dot="bg-lime-500" />
-            <TapeContent bg="bg-black" dot="bg-lime-500" />
+            <TapeContent bg="bg-(--background)" dot="bg-(--primary)" />
+            <TapeContent bg="bg-(--background)" dot="bg-(--primary)" />
           </div>
         </div>
       </div>
@@ -32,8 +32,8 @@ export default function Banners() {
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="w-full max-w-7xl">
           <div className="flex animate-marquee-reverse whitespace-nowrap -rotate-3">
-            <TapeContent bg="bg-lime-500" text="text-black" dot="bg-black" />
-            <TapeContent bg="bg-lime-500" text="text-black" dot="bg-black" />
+            <TapeContent bg="bg-(--primary)" text="text-(--background)" dot="bg-(--sec-color)" />
+            <TapeContent bg="bg-(--primary)" text="text-(--background)" dot="bg-(--sec-color)" />
           </div>
         </div>
       </div>
@@ -61,7 +61,7 @@ export default function Banners() {
 }
 
 // Componentă reutilizabilă pentru conținut
-function TapeContent({ bg, text = "text-white", dot }: { bg: string; text?: string; dot: string }) {
+function TapeContent({ bg, text = "text-(--sec-color)", dot }: { bg: string; text?: string; dot: string }) {
   return (
     <div className={`flex items-center gap-8 px-4 py-3 ${bg} shadow-lg`}>
       {items.map((item, i) => (
