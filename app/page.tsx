@@ -224,9 +224,7 @@ export default function HomePage() {
 
 
         <Partners />
-        <div className="relative h-full w-full">
           <SectionTest />
-        </div>
         <Banners />
         <Reviews />
         <Footer />
