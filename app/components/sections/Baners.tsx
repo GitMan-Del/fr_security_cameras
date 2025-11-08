@@ -17,7 +17,7 @@ const items = [
 
 export default function Banners() {
   return (
-    <div className="relative w-full h-32 py-16 overflow-hidden flex items-center justify-center bg-transparent">
+    <div className="relative w-full h-32 py-20 overflow-hidden flex items-center justify-center bg-transparent">
       {/* Banda 1 – Neagră, +3° */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="w-full max-w-7xl">
