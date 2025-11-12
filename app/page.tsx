@@ -8,6 +8,7 @@ import Reviews from "./components/sections/Reviews";
 import Footer from "./components/footer";
 import TeamSection from "./components/sections/Team";
 import Hero from "./components/sections/Hero";
+import Map from "./components/sections/Map";
 
 export default function HomePage() {
   ScrollHook();
@@ -20,6 +21,7 @@ export default function HomePage() {
       <Banners />
       <Reviews />
       <TeamSection />
+      <Map />
       <Footer />
     </>
   );
