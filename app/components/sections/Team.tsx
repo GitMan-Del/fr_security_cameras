@@ -57,25 +57,25 @@ export default function TeamSection() {
   ];
 
   const { translate } = useLanguage();
-    const scrollContainerRef = useRef<HTMLDivElement>(null);
-  
-    const scrollLeft = () => {
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollBy({
-          left: -300, // ajustează cât vrei să se miște la un click
-          behavior: "smooth",
-        });
-      }
-    };
-  
-    const scrollRight = () => {
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollBy({
-          left: 300,
-          behavior: "smooth",
-        });
-      }
-    };
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -300, // ajustează cât vrei să se miște la un click
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 300,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
     <div className="w-full min-h-screen py-20 flex flex-col gap-20 max-w-7xl mx-auto">
       <div className="flex flex-row w-full justify-center md:justify-between">
@@ -83,12 +83,13 @@ export default function TeamSection() {
           style={{
             fontFamily: "unset",
           }}
-          className={`${translate ? "md:max-w-[750px]" : ""} md:max-w-[650px] max-w-[450px] bg-linear-to-b from-(--2-sec) to-(--sec-color) from-60% bg-clip-text text-transparent z-50 text-4xl md:text-5xl text-center md:text-left font-bold`}
+          className={`${
+            translate ? "md:max-w-[750px]" : ""
+          } md:max-w-[650px] max-w-[450px] bg-linear-to-b from-(--2-sec) to-(--sec-color) from-60% bg-clip-text text-transparent z-50 text-4xl md:text-5xl text-center md:text-left font-bold`}
         >
           {translate
             ? "More Than Just Installers – Your Trusted Security Partners"
-            : "Plus que des installateurs – vos partenaires de confiance"
-          }
+            : "Plus que des installateurs – vos partenaires de confiance"}
         </h4>
         <div className="md:flex hidden flex-row gap-3 items-center justify-center">
           {/* Left Arrow */}
@@ -131,45 +132,52 @@ export default function TeamSection() {
         </div>
       </div>
 
-      
-      <div ref={scrollContainerRef}
+      <div
+        ref={scrollContainerRef}
         style={{
-        scrollbarWidth: "none",
-      }}
-        className="overflow-x-auto overflow-y-hidden p-2">
-        <div className="w-fit h-full flex flex-row gap-10">          
-        {members.map((member) => (
-          <div
-            key={member.id}
-            className={` ${
-              member.active === true ? "bg-(--primary)" : "bg-[#EDEDED]"
-            } shrink-0 md:w-[350px] w-[300px] md:h-[550px] h-[500px] bg-(--primary) flex flex-col justify-end text-(--background) rounded-3xl`}
-          >
-            <div className="flex w-full h-full flex-col justify-between p-6">
-              <div className="flex flex-row w-full justify-between">
-                <div className="space-x-3">
-                {member.passion.map((passion, index) => (
-                  <span
-                    key={`${member.id}-${index}`} // sau passion dacă e unic
-                    className="text-xs w-fit bg-white rounded-2xl px-2 py-1 font-medium text-gray-700"
-                    >
-                    {passion}
+          scrollbarWidth: "none",
+        }}
+        className="overflow-x-auto overflow-y-hidden p-2"
+      >
+        <div className="w-fit h-full flex flex-row gap-10">
+          {members.map((member) => (
+            <div
+              key={member.id}
+              className={` ${
+                member.active === true ? "bg-(--primary)" : "bg-[#EDEDED]"
+              } shrink-0 md:w-[350px] w-[300px] md:h-[550px] h-[500px] bg-(--primary) flex flex-col justify-end text-(--background) rounded-3xl`}
+            >
+              <div className="flex w-full h-full flex-col justify-between p-6">
+                <div className="flex flex-row w-full justify-between">
+                  <div className="space-x-3">
+                    {member.passion.map((passion, index) => (
+                      <span
+                        key={`${member.id}-${index}`} // sau passion dacă e unic
+                        className="text-xs w-fit bg-white rounded-2xl px-2 py-1 font-medium text-gray-700"
+                      >
+                        {passion}
+                      </span>
+                    ))}
+                  </div>
+
+                  <span className="text-xs w-fit bg-white rounded-2xl px-2 py-1 font-medium text-gray-700">
+                    {member.age}
                   </span>
-                ))}
                 </div>
-
-                <span className="text-xs w-fit bg-white rounded-2xl px-2 py-1 font-medium text-gray-700">{member.age}</span>
-
+                <div>
+                  <p className="text-5xl font-bold w-[90%]">{member.name}</p>
+                  <p className="text-xs mt-2">{member.describe}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-5xl font-bold w-[90%]">{member.name}</p>
-                <p className="text-xs mt-2">{member.describe}</p>
-              </div>
-
+              <Image
+                src={member.photo}
+                alt={"member:" + member.name}
+                width={600}
+                height={300}
+                className="object-cover rounded-3xl w-full"
+              />
             </div>
-            <Image src={member.photo} alt={"member:" +  member.name} width={600} height={300} className="object-cover rounded-3xl w-full" />
-          </div>
-        ))}
+          ))}
         </div>
       </div>
     </div>

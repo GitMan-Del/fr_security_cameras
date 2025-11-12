@@ -161,6 +161,7 @@ export default function Hero() {
                   backdropFilter: "blur(10px)", // efect blur
                   fontSize: "28px", // mărește dimensiunea SVG-ului
                 }}
+                aria-label="Défilement vers la droite"
                 onClick={prevSlide}
                 className="w-15 h-15 rounded-full p-2 flex items-center justify-center bg-white/20 backdrop-blur-xl border border-white/30 cursor-pointer shadow-lg"
               >
@@ -183,9 +184,9 @@ export default function Hero() {
                   background: "rgba(255, 255, 255, 0.2)", // alb semi-transparent
                   backdropFilter: "blur(10px)", // efect blur
                 }}
+                aria-label="Défilement vers la gauche"
                 onClick={nextSlide}
-                                className="w-15 h-15 rounded-full p-2 flex items-center justify-center bg-white/20 backdrop-blur-xl border border-white/30 cursor-pointer shadow-lg"
-
+                className="w-15 h-15 rounded-full p-2 flex items-center justify-center bg-white/20 backdrop-blur-xl border border-white/30 cursor-pointer shadow-lg"
               >
                 <svg
                   width="150"

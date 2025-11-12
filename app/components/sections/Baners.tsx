@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useLanguage } from '../LanguageContext'; // ajustează calea
+import { useLanguage } from "../LanguageContext"; // ajustează calea
 
 // Listele de traduceri
 const itemsEN = [
@@ -34,23 +34,23 @@ const itemsFR = [
 ];
 
 // Componentă reutilizabilă
-function TapeContent({ 
-  bg, 
-  text = "text-[var(--sec-color)]", 
-  dot 
-}: { 
-  bg: string; 
-  text?: string; 
+function TapeContent({
+  bg,
+  text = "text-[var(--sec-color)]",
+  dot,
+}: {
+  bg: string;
+  text?: string;
   dot: string;
 }) {
   const { translate } = useLanguage();
-  const items = translate ?  itemsEN : itemsFR;
+  const items = translate ? itemsEN : itemsFR;
 
   return (
     <div className={`flex items-center gap-8 px-4 py-3 ${bg} shadow-lg`}>
       {items.map((item, i) => (
         <div key={i} className="flex items-center gap-8">
-          <span 
+          <span
             className={`${text} font-bold uppercase tracking-widest text-sm md:text-base whitespace-nowrap`}
           >
             {item}
@@ -71,8 +71,14 @@ export default function Banners() {
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="w-full max-w-7xl">
           <div className="flex animate-marquee whitespace-nowrap rotate-3">
-            <TapeContent bg="bg-[var(--background)]" dot="bg-[var(--primary)]" />
-            <TapeContent bg="bg-[var(--background)]" dot="bg-[var(--primary)]" />
+            <TapeContent
+              bg="bg-[var(--background)]"
+              dot="bg-[var(--primary)]"
+            />
+            <TapeContent
+              bg="bg-[var(--background)]"
+              dot="bg-[var(--primary)]"
+            />
           </div>
         </div>
       </div>
@@ -81,15 +87,15 @@ export default function Banners() {
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="w-full max-w-7xl">
           <div className="flex animate-marquee-reverse whitespace-nowrap -rotate-3">
-            <TapeContent 
-              bg="bg-[var(--primary)]" 
-              text="text-[var(--background)]" 
-              dot="bg-[var(--sec-color)]" 
+            <TapeContent
+              bg="bg-[var(--primary)]"
+              text="text-[var(--background)]"
+              dot="bg-[var(--sec-color)]"
             />
-            <TapeContent 
-              bg="bg-[var(--primary)]" 
-              text="text-[var(--background)]" 
-              dot="bg-[var(--sec-color)]" 
+            <TapeContent
+              bg="bg-[var(--primary)]"
+              text="text-[var(--background)]"
+              dot="bg-[var(--sec-color)]"
             />
           </div>
         </div>
@@ -98,12 +104,20 @@ export default function Banners() {
       {/* Animații CSS */}
       <style jsx>{`
         @keyframes marquee {
-          0% { transform: translateX(-10%); }
-          100% { transform: translateX(-50%); }
+          0% {
+            transform: translateX(-10%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
         }
         @keyframes marquee-reverse {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(-10%); }
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(-10%);
+          }
         }
         .animate-marquee {
           animation: marquee 18s linear infinite;

@@ -3,7 +3,6 @@ import { Geist, Titan_One } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "./components/LanguageContext";
 
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -12,7 +11,7 @@ const geistSans = Geist({
 const TitanOne = Titan_One({
   variable: "--font-Titan_One",
   subsets: ["latin"],
-  weight: "400"
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -30,9 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${TitanOne.variable} antialiased`}
       >
-        <LanguageProvider>
-        {children}
-        </LanguageProvider>
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

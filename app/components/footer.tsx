@@ -59,7 +59,9 @@ export default function Footer() {
         <div className="md:col-span-8 grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
           {/* Community */}
           <div>
-            <span className="font-semibold text-(--background) mb-3">Community</span>
+            <span className="font-semibold text-(--background) mb-3">
+              Community
+            </span>
             <ul className="space-y-2 text-gray-600">
               <li>
                 <a href="#" className="hover:text-(--background) transition">
@@ -108,7 +110,9 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <span className="font-semibold text-(--background) mb-3">Company</span>
+            <span className="font-semibold text-(--background) mb-3">
+              Company
+            </span>
             <ul className="space-y-2 text-gray-600">
               <li>
                 <a href="#" className="hover:text-(--background) transition">
@@ -140,7 +144,9 @@ export default function Footer() {
 
           {/* Products */}
           <div>
-            <span className="font-semibold text-(--background) mb-3">Products</span>
+            <span className="font-semibold text-(--background) mb-3">
+              Products
+            </span>
             <ul className="space-y-2 text-gray-600">
               <li>
                 <a href="#" className="hover:text-(--background) transition">

@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
+import { useRef } from "react";
 import { useLanguage } from "../LanguageContext";
 
 const TestimonialBubble = ({ children }: { children: React.ReactNode }) => (
-  <div className="relative w-full h-auto">
+  <div className="relative w-full h-auto shrink-0 snap-center md:shrink md:snap-auto">
     <div className="absolute"></div>
     <svg
       className="w-full min-w-[370px] h-fit min-h-[250px]"
@@ -67,10 +67,12 @@ const testimonials = [
     name: "George Radu",
     time: "One week ago",
     image: "/important/profile_pictures/TeamCEO2.png",
-  // English – varianta MEDIE, naturală și umană
-    text_en: "The team was always available whenever I had a question, and they paid incredible attention to every detail. They really took the time to understand what we needed and made sure everything was perfect. Professional, friendly, and super reliable – I highly recommend them!",
-  // French – varianta MEDIE, naturală și umană
-text_fr: "L’équipe a toujours été disponible dès que j’avais une question et ils ont porté une attention incroyable à chaque détail. Ils ont vraiment pris le temps de comprendre nos besoins et se sont assurés que tout soit parfait. Professionnels, sympathiques et ultra fiables – je les recommande vivement !",
+    // English – varianta MEDIE, naturală și umană
+    text_en:
+      "The team was always available whenever I had a question, and they paid incredible attention to every detail. They really took the time to understand what we needed and made sure everything was perfect. Professional, friendly, and super reliable – I highly recommend them!",
+    // French – varianta MEDIE, naturală și umană
+    text_fr:
+      "L’équipe a toujours été disponible dès que j’avais une question et ils ont porté une attention incroyable à chaque détail. Ils ont vraiment pris le temps de comprendre nos besoins et se sont assurés que tout soit parfait. Professionnels, sympathiques et ultra fiables – je les recommande vivement !",
   },
 ];
 
@@ -96,7 +98,6 @@ export default function Reviews() {
     }
   };
 
-
   return (
     <div className="w-full py-20 md:min-h-screen h-fit flex items-center flex-col gap-10 ">
       <div className="flex flex-col items-center gap-10">
@@ -104,7 +105,9 @@ export default function Reviews() {
           style={{
             fontFamily: "unset",
           }}
-          className={`${translate ? "" : "md:max-w-[710px]"} md:max-w-[610px] max-w-[350px] bg-linear-to-b from-(--2-sec) from-60% to-(--sec-color) bg-clip-text text-transparent z-50 text-4xl md:text-5xl text-center font-bold`}
+          className={`${
+            translate ? "" : "md:max-w-[710px]"
+          } md:max-w-[610px] max-w-[350px] bg-linear-to-b from-(--2-sec) from-60% to-(--sec-color) bg-clip-text text-transparent z-50 text-4xl md:text-5xl text-center font-bold`}
         >
           {translate
             ? "Trusted by homeowners across France"
@@ -125,7 +128,7 @@ export default function Reviews() {
         </div>
       </div>
 
-      <div  className="w-full h-full flex flex-2 flex-row items-center gap-10 pl-10 md:pl-[150px]">
+      <div className="w-full h-full flex flex-2 flex-row items-center gap-10 pl-10 md:pl-[150px]">
         <div className="flex-1 flex-col md:flex hidden gap-10">
           {/* Quotation SVG */}
           <svg
@@ -199,21 +202,20 @@ export default function Reviews() {
           </div>
         </div>
         {/* Testimonial Content Area */}
-        <div ref={scrollContainerRef}
+        <div
+          ref={scrollContainerRef}
           style={{
             scrollbarWidth: "none",
           }}
-          className="w-full h-fit flex-5 flex flex-row lg:gap-5 gap-10 p-10 overflow-y-hidden overflow-scroll "
+          className="w-full h-fit flex-5 flex flex-row gap-10 p-10 overflow-y-hidden overflow-x-auto snap-x snap-mandatory scroll-smooth"
         >
           {testimonials.map((testimonials, index) => (
             <TestimonialBubble key={index}>
               <div className="flex pl-2 flex-col justify-between w-full h-full">
                 <span className="text-[13px] w-full">
-                {translate 
-                    ? testimonials.text_en
-                    : testimonials.text_fr
-                }
+                  {translate ? testimonials.text_en : testimonials.text_fr}
                 </span>
+
                 <svg
                   width="78"
                   height="14"
@@ -245,13 +247,13 @@ export default function Reviews() {
                 </svg>
               </div>
 
-              <div className="absolute flex flex-row -bottom-7 left-10 gap-3 ">
+              <div className="absolute flex flex-row -bottom-7 left-10 gap-3">
                 <Image
                   src={testimonials.image}
-                  alt={testimonials.image + "1"}
-                  width={50}
-                  height={50}
-                  className="rounded-full w-12 h-12"
+                  alt={testimonials.name}
+                  width={48}
+                  height={48}
+                  className="rounded-full w-12 h-12 object-cover"
                 />
                 <div className="flex flex-col text-(--2-sec)">
                   <span className="text-base text-(--background)">
