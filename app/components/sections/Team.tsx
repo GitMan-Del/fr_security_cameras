@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { useLanguage } from "../LanguageContext";
+import { useRef } from "react";
 
 interface TeamMember {
   id: string;
@@ -54,6 +56,26 @@ export default function TeamSection() {
     // Add more members as needed
   ];
 
+  const { translate } = useLanguage();
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+  
+    const scrollLeft = () => {
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollBy({
+          left: -300, // ajustează cât vrei să se miște la un click
+          behavior: "smooth",
+        });
+      }
+    };
+  
+    const scrollRight = () => {
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollBy({
+          left: 300,
+          behavior: "smooth",
+        });
+      }
+    };
   return (
     <div className="w-full min-h-screen py-20 flex flex-col gap-20 max-w-7xl mx-auto">
       <div className="flex flex-row w-full justify-center md:justify-between">
@@ -61,9 +83,12 @@ export default function TeamSection() {
           style={{
             fontFamily: "unset",
           }}
-          className="md:max-w-[550px] max-w-[450px] bg-linear-to-b from-(--2-sec) to-(--sec-color) from-60% bg-clip-text text-transparent z-50 text-4xl md:text-5xl text-center md:text-left font-bold"
+          className={`${translate ? "md:max-w-[750px]" : ""} md:max-w-[650px] max-w-[450px] bg-linear-to-b from-(--2-sec) to-(--sec-color) from-60% bg-clip-text text-transparent z-50 text-4xl md:text-5xl text-center md:text-left font-bold`}
         >
-          Title about the team and more informations
+          {translate
+            ? "More Than Just Installers – Your Trusted Security Partners"
+            : "Plus que des installateurs – vos partenaires de confiance"
+          }
         </h4>
         <div className="md:flex hidden flex-row gap-3 items-center justify-center">
           {/* Left Arrow */}
@@ -75,6 +100,7 @@ export default function TeamSection() {
             }}
             aria-label="Previous Team Member"
             className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            onClick={scrollLeft}
           >
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
               <path
@@ -91,6 +117,7 @@ export default function TeamSection() {
               padding: "10px",
               borderRadius: "100px",
             }}
+            onClick={scrollRight}
             aria-label="Next testimonial"
             className="p-2 rounded-full transition-colors rotate-180"
           >
@@ -105,7 +132,7 @@ export default function TeamSection() {
       </div>
 
       
-      <div
+      <div ref={scrollContainerRef}
         style={{
         scrollbarWidth: "none",
       }}
@@ -116,7 +143,7 @@ export default function TeamSection() {
             key={member.id}
             className={` ${
               member.active === true ? "bg-(--primary)" : "bg-[#EDEDED]"
-            } shrink-0 md:w-[350px] w-[300px] overflow-hidden md:h-[550px] h-[500px] bg-(--primary) flex flex-col justify-end text-(--background) rounded-3xl`}
+            } shrink-0 md:w-[350px] w-[300px] md:h-[550px] h-[500px] bg-(--primary) flex flex-col justify-end text-(--background) rounded-3xl`}
           >
             <div className="flex w-full h-full flex-col justify-between p-6">
               <div className="flex flex-row w-full justify-between">

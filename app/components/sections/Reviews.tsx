@@ -1,12 +1,14 @@
-import Image from "next/image";
+"use client";
 
+import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
+import { useLanguage } from "../LanguageContext";
 
 const TestimonialBubble = ({ children }: { children: React.ReactNode }) => (
   <div className="relative w-full h-auto">
     <div className="absolute"></div>
     <svg
-      className="w-full h-auto min-w-[370px]"
+      className="w-full min-w-[370px] h-fit min-h-[250px]"
       viewBox="0 0 370 302"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -35,68 +37,78 @@ const testimonials = [
     name: "Amelia",
     time: "Tow hours ago",
     image: "/important/profile_pictures/Amelia.png",
-    text: "“Top-quality installation and customer care. They recommended the best camera positions for my home and completed the job on time. Clear footage, reliable system, and fair pricing. I’d definitely hire them again.”",
+    text_en:
+      "“Top-quality installation and customer care. They recommended the best camera positions for my home and completed the job on time. Clear footage, reliable system, and fair pricing. I’d definitely hire them again.”",
+    text_fr:
+      "”Installation de haute qualité et service client exemplaire. Ils m’ont conseillé les meilleurs emplacements pour les caméras de ma maison et ont terminé le travail dans les délais. Images nettes, système fiable et prix honnêtes. Je ferais de nouveau appel à eux sans hésiter.”",
   },
   {
     id: 2,
     name: "Alex Margi",
     time: "Tow weeks ago",
     image: "/important/profile_pictures/Alex.png",
-    text: "“Excellent service from start to finish. The technicians installed my security cameras quickly and neatly. They explained how to use the system and even adjusted the angles for full coverage. I feel much safer now.lent service from start to finish. The technicians installed my securitlent service from start to finish. The technicians installed my security cameras quickly and neatly.”",
+    text_en:
+      "“Excellent service from start to finish. The technicians installed my security cameras quickly and neatly. They explained how to use the system and even adjusted the angles for full coverage. I feel much safer now.lent service from start to finish. The technicians installed my securitlent service from start to finish. The technicians installed my security cameras quickly and neatly.”",
+    text_fr:
+      "“Service excellent du début à la fin. Les techniciens ont installé mes caméras de sécurité rapidement et proprement. Ils m’ont expliqué comment utiliser le système et ont même ajusté les angles pour une couverture complète. Je me sens beaucoup plus en sécurité maintenant.”",
   },
   {
     id: 3,
     name: "Peter D.",
     time: "Tow weeks ago",
     image: "/important/profile_pictures/Peter.png",
-    text: "“Professional and fast CCTV installation. The team arrived on time, explained every step, and set up everything perfectly. The image quality is crystal clear. Highly recommend their reliable service.”",
+    text_en:
+      "“Professional and fast CCTV installation. The team arrived on time, explained every step, and set up everything perfectly. The image quality is crystal clear. Highly recommend their reliable service.”",
+    text_fr:
+      "“Installation de vidéosurveillance professionnelle et rapide. L’équipe est arrivée à l’heure, a tout expliqué étape par étape et a effectué une installation parfaite. La qualité d’image est exceptionnelle. Je recommande vivement leur service fiable.”",
   },
   {
     id: 4,
     name: "George Radu",
     time: "One week ago",
-    image: "/avatar4.jpg",
-    text: "Echipa este mereu disponibilă și atentă la detalii.",
+    image: "/important/profile_pictures/TeamCEO2.png",
+  // English – varianta MEDIE, naturală și umană
+    text_en: "The team was always available whenever I had a question, and they paid incredible attention to every detail. They really took the time to understand what we needed and made sure everything was perfect. Professional, friendly, and super reliable – I highly recommend them!",
+  // French – varianta MEDIE, naturală și umană
+text_fr: "L’équipe a toujours été disponible dès que j’avais une question et ils ont porté une attention incroyable à chaque détail. Ils ont vraiment pris le temps de comprendre nos besoins et se sont assurés que tout soit parfait. Professionnels, sympathiques et ultra fiables – je les recommande vivement !",
   },
 ];
 
 export default function Reviews() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const { translate } = useLanguage();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Navigare
-  const goToPrev = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? testimonials.length - 1 : prev - 1
-    );
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  // Scroll sincronizat cu index
-  useEffect(() => {
-    if (carouselRef.current) {
-      const slideWidth = carouselRef.current.children[0].clientWidth;
-      const gap = 24; // gap-6 = 1.5rem = 24px
-      carouselRef.current.scrollTo({
-        left: (slideWidth + gap) * currentIndex,
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -300, // ajustează cât vrei să se miște la un click
         behavior: "smooth",
       });
     }
-  }, [currentIndex]);
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 300,
+        behavior: "smooth",
+      });
+    }
+  };
+
 
   return (
-    <div className="w-full md:min-h-screen h-fit flex items-center flex-col gap-10 ">
+    <div className="w-full py-20 md:min-h-screen h-fit flex items-center flex-col gap-10 ">
       <div className="flex flex-col items-center gap-10">
         <h3
           style={{
             fontFamily: "unset",
           }}
-          className="md:max-w-[410px] max-w-[350px] bg-linear-to-b from-(--2-sec) from-60% to-(--sec-color) bg-clip-text text-transparent z-50 text-4xl md:text-5xl text-center mt-32 font-bold"
+          className={`${translate ? "" : "md:max-w-[710px]"} md:max-w-[610px] max-w-[350px] bg-linear-to-b from-(--2-sec) from-60% to-(--sec-color) bg-clip-text text-transparent z-50 text-4xl md:text-5xl text-center font-bold`}
         >
-          Read reviews, ride with confidence
+          {translate
+            ? "Trusted by homeowners across France"
+            : "Plébiscité par les propriétaires partout en France"}
         </h3>
         <div className="flex flex-row items-center justify-center gap-5">
           <p className="mt-2 md:text-base text-xs">4.3/5</p>
@@ -107,11 +119,13 @@ export default function Reviews() {
             height={50}
             className="max-w-28 h-10 md:w-[150px] md:h-[50px]"
           />
-          <p className="mt-2 md:text-base text-xs">Based on 5210 reviews</p>
+          <p className="mt-2 md:text-base text-xs">
+            {translate ? "Based on 5210 reviews" : "Basé sur 5 210 avis"}
+          </p>
         </div>
       </div>
 
-      <div className="w-full h-full flex flex-2 flex-row items-center gap-10 pl-10 md:pl-[150px]">
+      <div  className="w-full h-full flex flex-2 flex-row items-center gap-10 pl-10 md:pl-[150px]">
         <div className="flex-1 flex-col md:flex hidden gap-10">
           {/* Quotation SVG */}
           <svg
@@ -137,7 +151,9 @@ export default function Reviews() {
             className="max-w-[150px] text-2xl text-left tracking-tight font-medium text-(--background)"
             style={{ fontFamily: "inherit" }}
           >
-            What our Customers are saying
+            {translate
+              ? "What our Customers are saying"
+              : "Ce que disent nos clients"}
           </h4>
 
           {/* Navigation Controls */}
@@ -148,7 +164,7 @@ export default function Reviews() {
                 background: "unset",
                 padding: "unset",
               }}
-              onClick={goToPrev}
+              onClick={scrollLeft}
               aria-label="Previous testimonial"
               className="p-2 hover:bg-gray-100 rounded-full transition-colors"
             >
@@ -170,7 +186,7 @@ export default function Reviews() {
                 padding: "unset",
               }}
               aria-label="Next testimonial"
-              onClick={goToNext}
+              onClick={scrollRight}
               className="p-2 rounded-full transition-colors rotate-180"
             >
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
@@ -183,15 +199,21 @@ export default function Reviews() {
           </div>
         </div>
         {/* Testimonial Content Area */}
-        <div
-           style={{
-        scrollbarWidth: "none",
-      }}
-          className="w-full h-fit flex-5 flex flex-row gap-5 p-10 overflow-y-hidden overflow-scroll ">
+        <div ref={scrollContainerRef}
+          style={{
+            scrollbarWidth: "none",
+          }}
+          className="w-full h-fit flex-5 flex flex-row lg:gap-5 gap-10 p-10 overflow-y-hidden overflow-scroll "
+        >
           {testimonials.map((testimonials, index) => (
             <TestimonialBubble key={index}>
               <div className="flex pl-2 flex-col justify-between w-full h-full">
-                <span className="text-[13px]">{testimonials.text}</span>
+                <span className="text-[13px] w-full">
+                {translate 
+                    ? testimonials.text_en
+                    : testimonials.text_fr
+                }
+                </span>
                 <svg
                   width="78"
                   height="14"
@@ -229,6 +251,7 @@ export default function Reviews() {
                   alt={testimonials.image + "1"}
                   width={50}
                   height={50}
+                  className="rounded-full w-12 h-12"
                 />
                 <div className="flex flex-col text-(--2-sec)">
                   <span className="text-base text-(--background)">

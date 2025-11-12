@@ -9,7 +9,9 @@
   --2-sec: #2D2D2D;
 }
 
-
+::-webkit-scrollbar {
+  width: 0;
+}
 
 body{
  background: var(--sec-color);
