@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://https://camx.vercel.app/",
+    url: "https://camx.vercel.app/",
     siteName: "Vision Sécurité",
     title: "Vision Sécurité – Caméras de Sécurité Professionnelles",
     description:
