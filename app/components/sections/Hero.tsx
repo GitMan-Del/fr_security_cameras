@@ -91,7 +91,7 @@ export default function Hero() {
               transition={{ duration: 0.9, ease: "easeOut" }}
               className="w-full flex flex-col gap-3 mx-auto items-center md:items-start"
             >
-              <h1 className="text-3xl xl:text-5xl max-w-[600px] text-(--sec-color)">
+              <h1 className="text-3xl font-bold xl:text-5xl max-w-[600px] text-(--sec-color)">
                 {translate
                   ? "Best Practices  For All Homes Security Systems"
                   : " Bonnes Pratiques Pour Tous Les Systèmes De Sécurité Domestique"}
@@ -102,11 +102,13 @@ export default function Hero() {
                   : "Protégez votre maison avec une installation professionnelle de caméras 4K. Notre équipe garantit un placement optimal, une configuration précise et des performances fiables de votre système de surveillance. Profitez d’une image nette, d’une couverture complète et d’une protection continue, jour et nuit."}
               </p>
               <div className="flex items-center md:justify-start justify-center flex-row gap-4 text-sm mt-4">
+                <a href="#services">  
                 <motion.button
                   whileHover={{
                     scale: 1.08,
                     boxShadow: "0 0 20px rgba(132,204,22,0.5)",
                   }}
+                  
                   whileTap={{ scale: 0.95 }}
                   className="px-6 py-3 bg-lime-500 text-black font-medium rounded-full"
                 >
@@ -114,6 +116,7 @@ export default function Hero() {
                     ? "Explore  Our Service"
                     : "Découvrez Nos Services"}
                 </motion.button>
+                </a>
                 <motion.button
                   whileHover={{ scale: 1.08 }}
                   whileTap={{ scale: 0.95 }}
@@ -157,13 +160,12 @@ export default function Hero() {
               <button
                 style={{
                   borderRadius: "20px", // full radius
-                  background: "transparent", // alb semi-transparent
-                  backdropFilter: "blur(10px)", // efect blur
+                  background: "var(--background)", // alb semi-transparent
                   fontSize: "28px", // mărește dimensiunea SVG-ului
                 }}
                 aria-label="Défilement vers la droite"
                 onClick={prevSlide}
-                className="w-15 h-15 rounded-full p-2 flex items-center justify-center bg-white/20 backdrop-blur-xl border border-white/30 cursor-pointer shadow-lg"
+                className="w-15 h-15 rounded-full p-2 flex items-center justify-center bg-white/20 backdrop-blur-xl  cursor-pointer shadow-lg"
               >
                 <svg
                   width="30"
@@ -181,12 +183,11 @@ export default function Hero() {
               <button
                 style={{
                   borderRadius: "20px", // full radius
-                  background: "rgba(255, 255, 255, 0.2)", // alb semi-transparent
-                  backdropFilter: "blur(10px)", // efect blur
+                  background: "var(--background)", // alb semi-transparent
                 }}
                 aria-label="Défilement vers la gauche"
                 onClick={nextSlide}
-                className="w-15 h-15 rounded-full p-2 flex items-center justify-center bg-white/20 backdrop-blur-xl border border-white/30 cursor-pointer shadow-lg"
+                className="w-15 h-15 rounded-full p-2 flex items-center justify-center bg-white/20 backdrop-blur-xl cursor-pointer shadow-lg"
               >
                 <svg
                   width="150"

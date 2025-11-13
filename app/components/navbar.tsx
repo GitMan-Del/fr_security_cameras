@@ -21,7 +21,7 @@ export default function Navbar({ isOpen, setIsOpen }: NavbarProps) {
   const links = [
     { href: "/", label: translate ? "Home" : "Accueil" },
     { href: "/entreprise", label: translate ? "Company" : "Entreprise" },
-    { href: "/services", label: "Services" },
+    { href: "#services", label: "Services" },
     {
       href: "/actualites",
       label: translate ? "News & Media" : "Actualités & Médias",
@@ -47,16 +47,13 @@ export default function Navbar({ isOpen, setIsOpen }: NavbarProps) {
       {/* LOGO + NAV */}
       <div className="flex-4 flex items-center max-w-[1200px]">
         <div className="flex flex-row justify-between text-(--sec-color) items-center p-4 md:p-0 md:px-10 w-full">
-          {/* Logo */}
-          <svg
-            width="37"
-            height="41"
-            viewBox="0 0 37 41"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* SVG-ul tău rămâne neschimbat */}
-          </svg>
+          <Image
+            src="/important/Logo.png"
+            width={60}
+            height={60}
+            alt="Logo"
+            className="object-cover"
+          />
 
           {/* NAV */}
           <nav className="lg:flex hidden relative mt-5 space-x-8" ref={navRef}>

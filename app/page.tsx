@@ -9,6 +9,7 @@ import Footer from "./components/footer";
 import TeamSection from "./components/sections/Team";
 import Hero from "./components/sections/Hero";
 import Map from "./components/sections/Map";
+import Pricing from "./components/sections/Pricing";
 
 export default function HomePage() {
   ScrollHook();
@@ -19,6 +20,7 @@ export default function HomePage() {
       <Partners />
       <SectionTest />
       <Banners />
+      <Pricing />
       <Reviews />
       <TeamSection />
       <Map />
