@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Vision Sécurité" }],
   creator: "Vision Sécurité",
   publisher: "Vision Sécurité",
-  metadataBase: new URL("https://https://camx.vercel.app/"),
+  metadataBase: new URL("https://camx.vercel.app/"),
   alternates: {
     canonical: "/",
     languages: {
